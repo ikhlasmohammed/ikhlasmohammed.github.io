@@ -65,7 +65,7 @@ main::before {
 }
 .site-name {
   color: var(--text);
-  font: 500 14px 'Manrope', sans-serif;
+  font: 500 16px 'Manrope', sans-serif;
   grid-column: 1;
   letter-spacing: -.03em;
   justify-self: start;
@@ -583,7 +583,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .cv-section { padding-left: 28px; padding-right: 28px; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .site-header { grid-template-columns: 1fr auto; }
-  .site-name { font-size: 13px; }
+  .site-name { font-size: 15px; }
   .desktop-navigation { display: none !important; }
   .mobile-menu-button {
     align-items: center;
@@ -660,7 +660,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .hero-portrait {
     border-radius: 16px;
     grid-row: 1;
-    justify-self: start;
+    justify-self: center;
     order: 1;
     width: min(250px, 64vw);
   }
@@ -670,6 +670,8 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .certification-list li { grid-template-columns: 100px 1fr; }
   .hero { min-height: auto; padding-top: 24px; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 16px 0 0; }
+  .hero-copy { text-align: center; }
+  .hero-copy .hero-links { justify-content: center; }
   .hero-role { font-size: 12px; margin-top: 12px; }
   .hero-copy .hero-links { margin-top: 14px; }
   .hero-bottom { margin-left: 0; }
@@ -699,6 +701,11 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .achievement-feature-grid { grid-template-columns: 1fr; }
   .achievement-feature { min-height: 420px; }
   .achievement-photo-stack figure { min-height: 220px; }
+  .achievement-list article {
+    gap: 14px;
+    padding: 14px 0;
+  }
+  .achievement-list article div { gap: 4px; }
   .achievement-list { grid-template-columns: 1fr; }
   .achievement-list article { border-left: 0; min-height: 300px; }
   .footer-main { align-items: flex-start; flex-direction: column; gap: 60px; }
