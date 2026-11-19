@@ -927,7 +927,7 @@ function App() {
           </article>
           <article>
             <span>2025 – Present</span>
-            <div><h3>Temasek LEAD — Top 10%</h3><p>Leadership and development programme, Temasek Polytechnic</p></div>
+            <div><h3>Temasek LEAD, Top 10%</h3><p>Leadership and development programme, Temasek Polytechnic</p></div>
           </article>
           <article>
             <span>2025 – 2026</span>
@@ -946,10 +946,10 @@ function App() {
           <h2>Recognition earned.</h2>
         </div>
         <div className="achievement-list">
-          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition — team of four, retail demand forecasting pipeline and web app in two days.</p></div></article>
-          <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic — top 25% of the cohort.</p></div></article>
-          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic — participated in the Prudential / Insurtech category.</p></div></article>
-          <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School — top-tier leadership and service.</p></div></article>
+          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition, team of four, retail demand forecasting pipeline and web app in two days.</p></div></article>
+          <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic, top 25% of the cohort.</p></div></article>
+          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div></article>
+          <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School, top-tier leadership and service.</p></div></article>
           <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
           <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div></article>
           <article><span>2022</span><div><h3>Best Senior Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
