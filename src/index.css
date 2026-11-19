@@ -459,6 +459,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   gap: 10px;
 }
 .contact-icon {
+  fill: currentColor;
   height: 18px;
   stroke: none;
   width: 18px;
