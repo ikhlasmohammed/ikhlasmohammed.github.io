@@ -467,7 +467,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 .footer-bottom { border-top: 1px solid var(--line); color: var(--muted); display: flex; font-size: 9px; justify-content: space-between; letter-spacing: .1em; padding-top: 22px; text-transform: uppercase; }
 
 .detail-page { background: transparent; }
-.detail-hero { padding-bottom: 70px; padding-top: 50px; }
+.detail-hero { padding-bottom: 70px; padding-top: 110px; }
 .back-button { align-items: center; background: none; border: 0; color: var(--muted); display: flex; font-size: 11px; gap: 10px; padding: 0; transition: color .2s ease; }
 .back-button:hover { color: var(--accent); }
 .detail-title { align-items: end; display: grid; grid-template-columns: 1fr 36%; margin: 80px 0 55px; }
@@ -707,7 +707,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   }
   .achievement-list article div { gap: 4px; }
   .achievement-list { grid-template-columns: 1fr; }
-  .achievement-list article { border-left: 0; min-height: 300px; }
+  .achievement-list article { border-left: 0; min-height: 0; }
   .footer-main { align-items: flex-start; flex-direction: column; gap: 60px; }
   .footer-main a { font-size: 11px; gap: 15px; }
   .contact-links {
