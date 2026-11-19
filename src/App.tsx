@@ -399,7 +399,7 @@ function Header({ detail = false }: { detail?: boolean }) {
     ["skills", "Skills"],
     ["certifications", "Certifications"],
     ["work", "Projects"],
-    ["cca", "CCA"],
+    ["cca", "Leadership & CCA"],
     ["achievements", "Achievements"],
     ["contact", "Contact"],
   ]
@@ -825,12 +825,12 @@ function App() {
         </div>
         <div className="skills-grid">
           {[
-            ["Languages", ["Python", "JavaScript", "Dart", "HTML", "CSS"]],
-            ["Frameworks & Platforms", ["Node.js", "Flutter", "AWS"]],
-            ["Databases", ["MySQL", "MongoDB", "Firebase", "DynamoDB"]],
-            ["Practices", ["Agile", "Scrum", "UI/UX design"]],
-            ["Data & Analytics", ["scikit-learn", "Power BI", "KNIME", "Jupyter Notebook"]],
-            ["Tools", ["UiPath", "Git", "Figma", "Postman", "Office 365", "OCR & Regex"]],
+            ["Languages", ["Python", "Dart", "SQL", "JavaScript", "HTML", "CSS", "Regex"]],
+            ["Frameworks & Platforms", ["Flutter", "UiPath", "AWS Cloud", "Firebase", "scikit-learn", "Node.js", "TensorFlow", "PyTorch"]],
+            ["Databases", ["MySQL", "Firebase", "DynamoDB"]],
+            ["Practices", ["ML model development", "RPA workflow design", "Serverless AI apps", "Mobile app development", "UI/UX prototyping", "Version control"]],
+            ["Data Analytics", ["Power BI", "KNIME", "Data cleaning & EDA", "Jupyter Notebook"]],
+            ["Tools", ["Git", "Figma", "Kaggle", "VS Code", "Cisco Packet Tracer", "draw.io", "Postman"]],
           ].map(([title, items]) => (
             <article className="skill-topic" key={title as string}>
               <h3>{title as string}</h3>

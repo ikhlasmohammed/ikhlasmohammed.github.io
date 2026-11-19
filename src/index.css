@@ -74,7 +74,7 @@ main::before {
 .site-header nav { align-self: center; display: flex; gap: 38px; }
 .site-header nav { justify-self: end; }
 .mobile-menu-button,
-.mobile-navigation {
+.site-header .mobile-navigation {
   display: none;
 }
 .site-header nav a { color: var(--muted); font-size: 12px; transition: color .2s ease; }
@@ -597,10 +597,13 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     outline-offset: 3px;
   }
   .site-header .mobile-navigation {
+    align-self: stretch;
     background: rgb(7 11 17 / 96%);
     border-bottom: 1px solid var(--line);
     display: flex;
     flex-direction: column;
+    gap: 0;
+    justify-self: stretch;
     left: 0;
     max-width: 100%;
     min-height: calc(100dvh - 82px);
