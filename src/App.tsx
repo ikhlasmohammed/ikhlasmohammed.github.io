@@ -752,6 +752,7 @@ function App() {
             <h1>
               Building AI that feels <em>human.</em>
             </h1>
+            <p className="hero-role">Applied AI Junior @ Temasek Polytechnic</p>
             <div className="hero-links">
               <a className="button primary" href="#contact">
                 Get in touch <Arrow />

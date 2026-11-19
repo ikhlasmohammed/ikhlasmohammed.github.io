@@ -131,7 +131,13 @@ main::before {
 }
 .hero-copy .hero-links {
   margin-left: 0;
-  margin-top: 34px;
+  margin-top: 18px;
+}
+.hero-role {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: .03em;
+  margin-top: 18px;
 }
 .hero-portrait {
   aspect-ratio: 4 / 5;
@@ -279,7 +285,7 @@ main::before {
   gap: 20px;
   justify-content: space-between;
   min-width: 110px;
-  padding: 14px 15px;
+  padding: 10px 12px;
   transition: .2s ease;
 }
 .button.primary { background: var(--text); border-color: var(--text); color: var(--bg); }
@@ -655,14 +661,16 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     grid-row: 1;
     justify-self: center;
     order: 1;
-    width: min(330px, 78vw);
+    width: min(250px, 64vw);
   }
   .goals-grid { grid-template-columns: 1fr; gap: 42px; }
   .skills-grid { grid-template-columns: 1fr; gap: 28px; }
   .education-list article, .cca-list article { gap: 16px; grid-template-columns: 112px 1fr; }
   .certification-list li { grid-template-columns: 100px 1fr; }
   .hero { min-height: auto; padding-top: 24px; }
-  .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 34px 0 64px; }
+  .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 16px 0 0; }
+  .hero-role { font-size: 11px; margin-top: 12px; }
+  .hero-copy .hero-links { margin-top: 14px; }
   .hero-bottom { margin-left: 0; }
   .hero-links { flex-wrap: wrap; }
   .project-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
