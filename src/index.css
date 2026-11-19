@@ -57,6 +57,7 @@ main::before {
   display: grid;
   grid-template-columns: 1fr auto;
   height: 82px;
+  max-width: none;
   position: fixed;
   left: 0;
   right: 0;
