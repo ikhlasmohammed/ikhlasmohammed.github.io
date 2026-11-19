@@ -290,7 +290,8 @@ function Arrow({ direction = "up" }: { direction?: "up" | "left" }) {
 function LinkedInIcon() {
   return (
     <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5.2 8.4V19H1.8V8.4h3.4ZM3.5 6.7a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM19.2 13.1c0-3.2-1.7-4.9-4.1-4.9a3.6 3.6 0 0 0-3.3 1.8V8.4H8.5V19h3.4v-5.2c0-1.4.3-2.8 2-2.8 1.7 0 1.8 1.6 1.8 2.9V19h3.4l.1-5.9ZM22.2 2.7H1.8v18.6h20.4V2.7Z" />
+      <rect width="24" height="24" rx="2" fill="#0A66C2" />
+      <path fill="#fff" d="M6.7 9.5V18H4V9.5h2.7ZM5.35 8.25a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM18.8 13.1c0-2.55-1.36-3.95-3.27-3.95-1.5 0-2.17.82-2.55 1.4V9.5h-2.7V18H13v-4.2c0-1.1.2-2.17 1.45-2.17 1.24 0 1.26 1.25 1.26 2.24V18h2.7l.39-4.9Z" />
     </svg>
   )
 }
