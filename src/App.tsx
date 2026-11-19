@@ -407,9 +407,9 @@ function Header({ detail = false }: { detail?: boolean }) {
 
   return (
     <header className="site-header" ref={headerRef}>
-      <span className="site-name">
+      <a className="site-name" href={detail ? "/" : "#top"}>
         Mohammed Ikhlas
-      </span>
+      </a>
       {!detail && (
         <>
           <nav className="desktop-navigation" aria-label="Primary navigation">
