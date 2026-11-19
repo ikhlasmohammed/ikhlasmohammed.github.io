@@ -613,7 +613,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     justify-self: stretch;
     left: 0;
     max-width: 100%;
-    min-height: calc(100dvh - 82px);
+    height: auto;
     opacity: 0;
     overflow-y: auto;
     position: fixed;
