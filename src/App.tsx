@@ -331,7 +331,7 @@ function Header({ detail = false }: { detail?: boolean }) {
 
   useEffect(() => {
     if (detail) return
-    const sections = ["work", "oceanx", "endeavour", "achievements", "contact"]
+    const sections = ["work", "goals", "education", "skills", "cca", "achievements", "contact"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null)
     const observer = new IntersectionObserver(
@@ -355,9 +355,11 @@ function Header({ detail = false }: { detail?: boolean }) {
       {!detail && (
         <nav aria-label="Primary navigation">
             {[
-              ["work", "Work"],
-              ["oceanx", "OceanX"],
-              ["endeavour", "Endeavour"],
+              ["work", "Projects"],
+              ["goals", "Goals"],
+              ["education", "Education"],
+              ["skills", "Skills"],
+              ["cca", "CCA"],
               ["achievements", "Achievements"],
               ["contact", "Contact"],
             ].map(([id, label]) => (
@@ -667,41 +669,122 @@ function App() {
     <main>
       <Header />
       <section className="hero" id="top">
-        <h1>
-          Building AI that feels <em>human.</em>
-        </h1>
+        <div className="hero-title-row">
+          <h1>
+            Building AI that feels <em>human.</em>
+          </h1>
+          <img
+            className="hero-portrait"
+            src={assetUrl("/images/cv-pic.png")}
+            alt="Mohammed Ikhlas"
+          />
+        </div>
         <div className="hero-bottom">
-          <p>
-            I am a Year 2 Diploma in Applied AI student at Temasek Polytechnic.
-            I enjoy building machine learning models, cloud applications,
-            automation workflows and mobile products, then working through the
-            technical problems that make them reliable.
-          </p>
           <div className="hero-links">
             <a
-              className="button"
-              href="https://github.com/ikhlasmohammed"
-              target="_blank"
-              rel="noreferrer"
+              className="button primary"
+              href="#contact"
             >
-              GitHub <Arrow />
-            </a>
-            <a
-              className="button"
-              href="https://www.linkedin.com/in/mohammed-ikhlas"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn <Arrow />
+              Get in touch <Arrow />
             </a>
           </div>
         </div>
       </section>
 
+      <section className="goals-section cv-section" id="goals">
+        <div className="cv-section-heading">
+          <p className="eyebrow">02 / Professional goals</p>
+          <h2>Growing into influence.</h2>
+        </div>
+        <div className="goals-grid">
+          <p className="goals-lead">
+            I aspire to become an AI/ML engineer who combines strong technical
+            depth with the leadership needed to make meaningful decisions.
+          </p>
+          <div className="goals-list">
+            <article>
+              <span>01</span>
+              <p>Learn advanced AI and machine learning skills through hands-on projects and industry certifications.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <p>Build connections and become effective in high-pressure team environments where priorities change quickly.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <p>Grow into an influential engineering leader who can guide teams, shape strategy and drive company decisions.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="education-section cv-section" id="education">
+        <div className="cv-section-heading">
+          <p className="eyebrow">03 / Education</p>
+          <h2>Academic foundation.</h2>
+        </div>
+        <div className="education-list">
+          <article>
+            <span className="education-date">2025 – Present</span>
+            <div>
+              <h3>Diploma in Applied Artificial Intelligence</h3>
+              <p>Temasek Polytechnic</p>
+              <span>CGPA 3.78 / 4.00</span>
+            </div>
+          </article>
+          <article>
+            <span className="education-date">2021 – 2024</span>
+            <div>
+              <h3>GCE O-Level</h3>
+              <p>Changkat Changi Secondary School</p>
+              <span>L1R4 net score: 10</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="skills-section cv-section" id="skills">
+        <div className="cv-section-heading">
+          <p className="eyebrow">04 / Skills</p>
+          <h2>Built for practical impact.</h2>
+        </div>
+        <div className="skills-grid">
+          <article>
+            <h3>Technical</h3>
+            <div className="skill-tags">
+              {["Python", "scikit-learn", "UiPath", "OCR", "Regex", "AWS", "Rekognition", "Lambda", "Cognito", "Flutter", "Dart", "Firebase", "SQL", "MySQL", "JavaScript", "HTML", "CSS", "Power BI", "KNIME", "Git", "Figma"].map((skill) => (
+                <span key={skill}>{skill}</span>
+              ))}
+            </div>
+          </article>
+          <article>
+            <h3>Personal management</h3>
+            <ul>
+              <li>Performs under pressure and meets tight project deadlines.</li>
+              <li>Supports juniors and teammates with an approachable, disciplined style.</li>
+              <li>Leads committees and teams while communicating clearly.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="certifications-section cv-section" id="certifications">
+        <div className="cv-section-heading">
+          <p className="eyebrow">05 / Certifications</p>
+          <h2>Continuing development.</h2>
+        </div>
+        <ul className="certification-list">
+          <li><span>Microsoft</span>Career Essentials in Generative AI</li>
+          <li><span>NETS</span>QR Payment Gateway Integration Certificate</li>
+          <li><span>KNIME</span>Basic Proficiency in KNIME Analytics Platform</li>
+          <li><span>LinkedIn</span>Windows 11: Security</li>
+        </ul>
+      </section>
+
       <section className="work-section" id="work">
         <div className="section-intro">
           <div>
-            <p className="eyebrow">01 / Selected work</p>
+            <p className="eyebrow">06 / Projects</p>
             <h2>Ideas, made useful.</h2>
           </div>
           <p>
@@ -746,351 +829,68 @@ function App() {
         </div>
       </section>
 
-      <section className="oceanx-section" id="oceanx">
-        <div className="oceanx-intro">
-          <div>
-            <p className="eyebrow">02 / Why OceanX</p>
-            <h2>Technology that makes care visible.</h2>
-          </div>
-          <p>
-            OceanX brings together the things I care about most: technology,
-            education, meaningful problem solving and real-world impact. I am
-            excited by the opportunity to make ocean issues more accessible,
-            personal and actionable.
-          </p>
+      <section className="cca-section cv-section" id="cca">
+        <div className="cv-section-heading">
+          <p className="eyebrow">07 / Co-curricular activities</p>
+          <h2>Leadership in practice.</h2>
         </div>
-        <div className="oceanx-grid">
-          <article className="oceanx-lead">
-            <span className="oceanx-number">01</span>
-            <h3>From awareness to action.</h3>
-            <p>
-              Ocean literacy is not only about knowing facts. It is about
-              helping people understand how everyday choices connect to marine
-              ecosystems, climate and biodiversity. I want to explore how
-              thoughtful digital experiences can make those connections easier
-              to see and act on.
-            </p>
+        <div className="cca-list">
+          <article>
+            <span>2026 – Present</span>
+            <div><h3>Vice President</h3><p>Applied Artificial Intelligence Student Interest Group, Temasek Polytechnic</p></div>
           </article>
           <article>
-            <span className="oceanx-number">02</span>
-            <h3>What I bring.</h3>
-            <p>
-              As a Year 2 Diploma in Applied AI student at Temasek Polytechnic,
-              I bring experience in machine learning, cloud technologies,
-              automation, data analysis and user-centered software development.
-              I enjoy turning complex information into intuitive applications,
-              visualizations and intelligent systems.
-            </p>
+            <span>2026 – Present</span>
+            <div><h3>Sub Committee Member</h3><p>IT Sub Committee, Temasek Polytechnic</p></div>
           </article>
           <article>
-            <span className="oceanx-number">03</span>
-            <h3>Built under pressure.</h3>
-            <p>
-              At the HKIIT International Competition 2026 in Hong Kong, my team
-              built a retail demand forecasting pipeline and web application in
-              two days, earning a Merit Award. I contributed to technical
-              planning, machine learning development and UI/UX implementation.
-            </p>
+            <span>2026 – Present</span>
+            <div><h3>STAR Ambassador</h3><p>Temasek Polytechnic</p></div>
           </article>
-        </div>
-        <div className="oceanx-proof">
-          <div>
-            <p className="eyebrow">Ready to contribute</p>
-            <h3>Curious, collaborative and practical.</h3>
-          </div>
-          <p>
-            Beyond technical work, I serve as Vice President of the Applied AI
-            Student Interest Group and participate in Temasek LEAD. My
-            experience in NCC (Air), where I became a Master Sergeant, Parade
-            Commander and Certified Mentor, has strengthened how I communicate,
-            lead and support a team. I would bring that same collaborative
-            mindset to an OceanX hackathon team.
-          </p>
+          <article>
+            <span>2025 – Present</span>
+            <div><h3>Temasek LEAD — Top 10%</h3><p>Leadership and development programme, Temasek Polytechnic</p></div>
+          </article>
+          <article>
+            <span>2025 – 2026</span>
+            <div><h3>Class and Sports Representative</h3><p>Temasek Polytechnic</p></div>
+          </article>
+          <article>
+            <span>2021 – 2024</span>
+            <div><h3>Master Sergeant / NCC (Air)</h3><p>Changkat Changi Secondary School</p></div>
+          </article>
         </div>
       </section>
 
-      <section className="endeavours-section" id="endeavour">
-        <div className="endeavours-heading">
-          <p className="eyebrow">03 / Recent endeavours</p>
-          <h2>Places that changed how I see the world.</h2>
-        </div>
-        <section className="endeavour-section">
-          <div className="endeavour-copy">
-            <p className="eyebrow">Hong Kong and Shenzhen / 2026</p>
-            <h3>Hong Kong and Shenzhen.</h3>
-            <p>
-              In August 2026, I joined Temasek Polytechnic’s overseas study
-              trip to Hong Kong and Shenzhen. The experience brought together
-              technology visits, an international competition and conversations
-              with students and industry practitioners.
-            </p>
-            <p>
-              From visiting Huawei and Lenovo to earning a Merit Award in AI
-              and Analytics, the trip gave me a closer look at how ideas become
-              products, and how collaboration shapes the way we learn.
-            </p>
-          </div>
-          <div className="endeavour-gallery">
-            <figure className="endeavour-feature">
-              <img
-                src={assetUrl("/images/hong-kong-shenzhen/huawei.jpg")}
-                alt="Temasek Polytechnic students outside Huawei in Shenzhen"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Huawei, Shenzhen</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hong-kong-shenzhen/merit-award.jpg")}
-                alt="Merit Award in AI and Analytics from the International Competition 2026"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Merit Award, AI and Analytics</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hong-kong-shenzhen/lenovo.jpg")}
-                alt="Temasek Polytechnic students visiting Lenovo Future Centre"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Lenovo Future Centre</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hong-kong-shenzhen/competition.jpg")}
-                alt="Temasek Polytechnic team at International Competition 2026"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>International Competition 2026</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hong-kong-shenzhen/discussion.jpg")}
-                alt="Student speaking with a participant during the study trip"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Learning through conversation</figcaption>
-            </figure>
-          </div>
-        </section>
-        <section className="endeavour-section endeavour-hanoi">
-          <div className="endeavour-copy">
-            <p className="eyebrow">Global Studies / Hanoi, Vietnam</p>
-            <h3>Hanoi, Vietnam.</h3>
-            <p>
-              My Global Studies trip to Hanoi offered a different kind of
-              learning experience, rooted in place, people and perspective.
-              Exploring the city made its history and everyday rhythm feel
-              tangible, from the train tracks running through the Old Quarter
-              to the energy of its busy streets at night.
-            </p>
-            <p>
-              We also visited VSIP Bắc Ninh, where I gained a closer view of
-              Vietnam’s growing industrial and business landscape. The trip
-              reminded me that learning extends beyond classrooms, especially
-              when new environments challenge me to observe, listen and stay
-              curious.
-            </p>
-          </div>
-          <div className="endeavour-gallery">
-            <figure className="endeavour-feature">
-              <img
-                src={assetUrl("/images/hanoi/train-street.jpg")}
-                alt="Hanoi train street in the Old Quarter"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Hanoi Train Street</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hanoi/hanoi-night.jpg")}
-                alt="Hanoi street at night"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Hanoi after dark</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hanoi/vsip-bac-ninh.jpg")}
-                alt="VSIP Bac Ninh sign with Singapore and Vietnam flags"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>VSIP Bắc Ninh</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hanoi/global-studies.jpg")}
-                alt="Students taking part in a Global Studies activity in Vietnam"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Learning together</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/hanoi/vietnam-flags.jpg")}
-                alt="Vietnamese flags displayed along a tree-lined walkway"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Vietnam in colour</figcaption>
-            </figure>
-          </div>
-        </section>
-      </section>
-
-      <section className="achievements-section" id="achievements">
-        <div className="achievements-intro">
-          <div>
-            <p className="eyebrow">04 / Achievements</p>
-            <h2>
-              Recognition earned
-              <br />
-              through action.
-            </h2>
-          </div>
-          <p>
-            A mix of academic results, technical competitions, service and
-            leadership from secondary school to polytechnic.
-          </p>
-        </div>
-        <div className="achievement-feature-grid">
-          <figure className="achievement-feature">
-            <img
-              src={assetUrl("/images/achievements/top-in-class-2024.png")}
-              alt="Receiving a Top in Class 2024 academic achievement certificate"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>
-              <span>2024 / Academic achievement</span>
-              <strong>Top in Class</strong>
-            </figcaption>
-          </figure>
-          <div className="achievement-photo-stack">
-            <figure>
-              <img
-                src={assetUrl("/images/achievements/outstanding-service-award.png")}
-                alt="Receiving the Outstanding Service Award at school"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Outstanding Service Award</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/achievements/outstanding-cadet-award.png")}
-                alt="Outstanding Cadet award certificate from National Cadet Corps"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>Outstanding Cadet</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={assetUrl("/images/achievements/parade-commander.png")}
-                alt="Serving as Parade Commander during a school National Day parade"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>National Day Parade Commander</figcaption>
-            </figure>
-          </div>
+      <section className="achievements-section cv-section" id="achievements">
+        <div className="cv-section-heading">
+          <p className="eyebrow">08 / Achievements</p>
+          <h2>Recognition earned.</h2>
         </div>
         <div className="achievement-list">
-          <article>
-            <span className="achievement-marker">2026</span>
-            <div>
-              <p className="eyebrow">Recognition</p>
-              <h3>Merit Award</h3>
-              <strong>HKIIT International Competition</strong>
-              <p>
-                Built a stock forecasting machine learning pipeline and web app
-                with a team of four in two days.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2026</span>
-            <div>
-              <p className="eyebrow">Academic recognition</p>
-              <h3>Certificate of Academic Achievement</h3>
-              <strong>Temasek Polytechnic</strong>
-              <p>
-                Awarded for academic performance in the top 25% of the cohort.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2026</span>
-            <div>
-              <p className="eyebrow">Competition</p>
-              <h3>PolyFinTech100 API Hackathon</h3>
-              <strong>Temasek Polytechnic / Insurtech</strong>
-              <p>
-                Participated in the Prudential category and explored an
-                insurance technology problem.
-              </p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2024</span>
-            <div>
-              <p className="eyebrow">Leadership and service</p>
-              <h3>EAGLES Award</h3>
-              <strong>Changkat Changi Secondary School</strong>
-              <p>Awarded for top-tier leadership and service.</p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2024</span>
-            <div>
-              <p className="eyebrow">NCC (Air)</p>
-              <h3>Outstanding Cadet</h3>
-              <strong>Changkat Changi Secondary School</strong>
-              <p>Awarded for outstanding performance and conduct as a cadet.</p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2024</span>
-            <div>
-              <p className="eyebrow">Service</p>
-              <h3>Outstanding Service Award</h3>
-              <strong>Changkat Changi Secondary School</strong>
-              <p>Awarded for outstanding service to the school.</p>
-            </div>
-          </article>
-          <article>
-            <span className="achievement-marker">2022</span>
-            <div>
-              <p className="eyebrow">NCC (Air)</p>
-              <h3>Best Senior Cadet</h3>
-              <strong>Changkat Changi Secondary School</strong>
-              <p>Awarded for the best performance among senior cadets.</p>
-            </div>
-          </article>
+          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition — team of four, retail demand forecasting pipeline and web app in two days.</p></div></article>
+          <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic — top 25% of the cohort.</p></div></article>
+          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic — participated in the Prudential / Insurtech category.</p></div></article>
+          <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School — top-tier leadership and service.</p></div></article>
+          <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
+          <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div></article>
+          <article><span>2022</span><div><h3>Best Senior Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
         </div>
       </section>
 
       <footer id="contact">
-        <p className="eyebrow">05 / Let’s connect</p>
+        <p className="eyebrow">09 / Let’s connect</p>
         <div className="footer-main">
           <h2>
             Have an idea?
             <br />
             <em>Let’s make it real.</em>
           </h2>
-          <a href="mailto:mohammed.ikhlas66@gmail.com">
-            mohammed.ikhlas66@gmail.com <Arrow />
-          </a>
+          <div className="contact-links">
+            <a href="mailto:mohammed.ikhlas66@gmail.com">mohammed.ikhlas66@gmail.com <Arrow /></a>
+            <a href="https://www.linkedin.com/in/mohammed-ikhlas" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
+            <a href="https://github.com/ikhlasmohammed" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
+          </div>
         </div>
         <div className="footer-bottom">
           <span>Mohammed Ikhlas · Singapore</span>
