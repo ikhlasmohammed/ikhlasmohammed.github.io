@@ -287,6 +287,22 @@ function Arrow({ direction = "up" }: { direction?: "up" | "left" }) {
   )
 }
 
+function LinkedInIcon() {
+  return (
+    <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5.2 8.4V19H1.8V8.4h3.4ZM3.5 6.7a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM19.2 13.1c0-3.2-1.7-4.9-4.1-4.9a3.6 3.6 0 0 0-3.3 1.8V8.4H8.5V19h3.4v-5.2c0-1.4.3-2.8 2-2.8 1.7 0 1.8 1.6 1.8 2.9V19h3.4l.1-5.9ZM22.2 2.7H1.8v18.6h20.4V2.7Z" />
+    </svg>
+  )
+}
+
+function GitHubIcon() {
+  return (
+    <svg className="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 1.5a10.5 10.5 0 0 0-3.3 20.5c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 2.2 3.2 1.6.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.1-4.7-5.1 0-1.1.4-2.1 1.1-2.8-.1-.3-.5-1.3.1-2.8 0 0 .9-.3 2.9 1.1a10 10 0 0 1 5.3 0c2-1.4 2.9-1.1 2.9-1.1.6 1.5.2 2.5.1 2.8.7.7 1.1 1.7 1.1 2.8 0 4-2.4 4.8-4.7 5.1.4.3.7 1 .7 2V21c0 .3.2.6.7.5A10.5 10.5 0 0 0 12 1.5Z" />
+    </svg>
+  )
+}
+
 function Mark({ type }: { type: string }) {
   return (
     <div className={`project-mark mark-${type}`} aria-hidden="true">
@@ -328,10 +344,12 @@ function Mark({ type }: { type: string }) {
 
 function Header({ detail = false }: { detail?: boolean }) {
   const [activeSection, setActiveSection] = useState("work")
+  const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (detail) return
-    const sections = ["work", "goals", "education", "skills", "cca", "achievements", "contact"]
+    const sections = ["goals", "education", "skills", "certifications", "work", "cca", "achievements", "contact"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null)
     const observer = new IntersectionObserver(
@@ -347,22 +365,54 @@ function Header({ detail = false }: { detail?: boolean }) {
     return () => observer.disconnect()
   }, [detail])
 
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false)
+    }
+    const closeOnOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false)
+    }
+    const closeOnDesktop = () => {
+      if (window.matchMedia("(min-width: 961px)").matches) setMenuOpen(false)
+    }
+
+    document.addEventListener("keydown", closeOnEscape)
+    document.addEventListener("pointerdown", closeOnOutside)
+    window.addEventListener("resize", closeOnDesktop)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener("keydown", closeOnEscape)
+      document.removeEventListener("pointerdown", closeOnOutside)
+      window.removeEventListener("resize", closeOnDesktop)
+    }
+  }, [menuOpen])
+
+  const navigation = [
+    ["goals", "Goals"],
+    ["education", "Education"],
+    ["skills", "Skills"],
+    ["certifications", "Certifications"],
+    ["work", "Projects"],
+    ["cca", "CCA"],
+    ["achievements", "Achievements"],
+    ["contact", "Contact"],
+  ]
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <span className="site-name">
         Mohammed Ikhlas
       </span>
       {!detail && (
-        <nav aria-label="Primary navigation">
-            {[
-              ["work", "Projects"],
-              ["goals", "Goals"],
-              ["education", "Education"],
-              ["skills", "Skills"],
-              ["cca", "CCA"],
-              ["achievements", "Achievements"],
-              ["contact", "Contact"],
-            ].map(([id, label]) => (
+        <>
+          <nav className="desktop-navigation" aria-label="Primary navigation">
+            {navigation.map(([id, label]) => (
               <a
                 key={id}
                 className={activeSection === id ? "is-active" : ""}
@@ -372,7 +422,35 @@ function Header({ detail = false }: { detail?: boolean }) {
                 <span className="nav-dot" aria-hidden="true" />
               </a>
             ))}
-        </nav>
+          </nav>
+          <button
+            className="mobile-menu-button"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span aria-hidden="true">{menuOpen ? "✕" : "☰"}</span>
+          </button>
+          <nav
+            className={`mobile-navigation${menuOpen ? " is-open" : ""}`}
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
+            aria-hidden={!menuOpen}
+          >
+            {navigation.map(([id, label]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                tabIndex={menuOpen ? undefined : -1}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </>
       )}
     </header>
   )
@@ -670,24 +748,21 @@ function App() {
       <Header />
       <section className="hero" id="top">
         <div className="hero-title-row">
-          <h1>
-            Building AI that feels <em>human.</em>
-          </h1>
+          <div className="hero-copy">
+            <h1>
+              Building AI that feels <em>human.</em>
+            </h1>
+            <div className="hero-links">
+              <a className="button primary" href="#contact">
+                Get in touch <Arrow />
+              </a>
+            </div>
+          </div>
           <img
             className="hero-portrait"
             src={assetUrl("/images/cv-pic.png")}
             alt="Mohammed Ikhlas"
           />
-        </div>
-        <div className="hero-bottom">
-          <div className="hero-links">
-            <a
-              className="button primary"
-              href="#contact"
-            >
-              Get in touch <Arrow />
-            </a>
-          </div>
         </div>
       </section>
 
@@ -749,22 +824,23 @@ function App() {
           <h2>Built for practical impact.</h2>
         </div>
         <div className="skills-grid">
-          <article>
-            <h3>Technical</h3>
-            <div className="skill-tags">
-              {["Python", "scikit-learn", "UiPath", "OCR", "Regex", "AWS", "Rekognition", "Lambda", "Cognito", "Flutter", "Dart", "Firebase", "SQL", "MySQL", "JavaScript", "HTML", "CSS", "Power BI", "KNIME", "Git", "Figma"].map((skill) => (
-                <span key={skill}>{skill}</span>
-              ))}
-            </div>
-          </article>
-          <article>
-            <h3>Personal management</h3>
-            <ul>
-              <li>Performs under pressure and meets tight project deadlines.</li>
-              <li>Supports juniors and teammates with an approachable, disciplined style.</li>
-              <li>Leads committees and teams while communicating clearly.</li>
-            </ul>
-          </article>
+          {[
+            ["Languages", ["Python", "JavaScript", "Dart", "HTML", "CSS"]],
+            ["Frameworks & Platforms", ["Node.js", "Flutter", "AWS"]],
+            ["Databases", ["MySQL", "MongoDB", "Firebase", "DynamoDB"]],
+            ["Practices", ["Agile", "Scrum", "UI/UX design"]],
+            ["Data & Analytics", ["scikit-learn", "Power BI", "KNIME", "Jupyter Notebook"]],
+            ["Tools", ["UiPath", "Git", "Figma", "Postman", "Office 365", "OCR & Regex"]],
+          ].map(([title, items]) => (
+            <article className="skill-topic" key={title as string}>
+              <h3>{title as string}</h3>
+              <div className="skill-tags">
+                {(items as string[]).map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -888,8 +964,14 @@ function App() {
           </h2>
           <div className="contact-links">
             <a href="mailto:mohammed.ikhlas66@gmail.com">mohammed.ikhlas66@gmail.com <Arrow /></a>
-            <a href="https://www.linkedin.com/in/mohammed-ikhlas" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
-            <a href="https://github.com/ikhlasmohammed" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
+            <a href="https://www.linkedin.com/in/mohammed-ikhlas" target="_blank" rel="noreferrer">
+              <span className="contact-label"><LinkedInIcon />LinkedIn</span>
+              <Arrow />
+            </a>
+            <a href="https://github.com/ikhlasmohammed" target="_blank" rel="noreferrer">
+              <span className="contact-label"><GitHubIcon />GitHub</span>
+              <Arrow />
+            </a>
           </div>
         </div>
         <div className="footer-bottom">
