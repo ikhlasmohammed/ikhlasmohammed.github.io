@@ -208,10 +208,8 @@ main::before {
   border: 1px solid rgb(219 237 255 / 16%);
   border-radius: 14px;
   height: 300px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  padding: 8px;
-  box-shadow: 0 12px 30px rgb(0 0 0 / 18%);
   width: 420px;
 }
 .list-description {
