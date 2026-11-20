@@ -1079,7 +1079,7 @@ function App() {
         <div className="achievement-list">
           <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition, team of four, retail demand forecasting pipeline and web app in two days.</p></div><img className="list-photo" src={assetUrl("/images/achievements/merit-award.png")} alt="Merit Award certificate" /></article>
           <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic, top 25% of the cohort.</p></div></article>
-          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div><img className="list-photo" src={assetUrl("/images/achievements/polyfintech-api.png")} alt="PolyFinTech100 API Hackathon project" /></article>
+          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div></article>
           <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School, top-tier leadership and service.</p></div></article>
           <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-cadet-award.png")} alt="Outstanding Cadet award" /></article>
           <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-service-award.png")} alt="Outstanding Service Award" /></article>
