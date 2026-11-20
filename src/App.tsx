@@ -831,8 +831,6 @@ function App() {
     return projects.find((project) => project.slug === slug) ?? null
   }
   const [selected, setSelected] = useState<Project | null>(getSelected)
-  const projectRowRef = useRef<HTMLDivElement>(null)
-  const [projectPosition, setProjectPosition] = useState(1)
 
   useEffect(() => {
     const onHashChange = () => setSelected(getSelected())
@@ -846,7 +844,9 @@ function App() {
         project={selected}
         close={() => {
           window.location.hash = "work"
-          window.scrollTo({ top: 0, behavior: "instant" })
+          window.setTimeout(() => {
+            document.getElementById("work")?.scrollIntoView({ behavior: "instant", block: "start" })
+          }, 0)
         }}
       />
     )
@@ -973,51 +973,12 @@ function App() {
             <p className="eyebrow">06 / Projects</p>
             <h2>Ideas, made useful.</h2>
           </div>
-          <div className="project-carousel-controls">
-            <p>
-              Six projects across AI, automation and product design.
-            </p>
-            <div className="carousel-actions">
-              <span className="carousel-progress" aria-live="polite">
-                {projectPosition} / {projects.length}
-              </span>
-              <button
-                type="button"
-                aria-label="Previous project"
-                onClick={() => {
-                  const row = projectRowRef.current
-                  if (!row) return
-                  const card = row.querySelector<HTMLElement>(".project-card-item")
-                  row.scrollBy({ left: -(card?.offsetWidth ?? row.clientWidth) - 16, behavior: "smooth" })
-                }}
-              >
-                <Arrow direction="left" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next project"
-                onClick={() => {
-                  const row = projectRowRef.current
-                  if (!row) return
-                  const card = row.querySelector<HTMLElement>(".project-card-item")
-                  row.scrollBy({ left: (card?.offsetWidth ?? row.clientWidth) + 16, behavior: "smooth" })
-                }}
-              >
-                <Arrow />
-              </button>
-            </div>
-          </div>
+          <p>
+            Six projects across AI, automation and product design. Select one
+            to explore the case study.
+          </p>
         </div>
-        <div
-          className="project-row"
-          ref={projectRowRef}
-          onScroll={(event) => {
-            const row = event.currentTarget
-            const card = row.querySelector<HTMLElement>(".project-card-item")
-            const step = (card?.offsetWidth ?? row.clientWidth) + 16
-            setProjectPosition(Math.min(projects.length, Math.round(row.scrollLeft / step) + 1))
-          }}
-        >
+        <div className="project-row">
           {projects.map((project) => (
             <div className="project-card-item" key={project.slug}>
               <button
