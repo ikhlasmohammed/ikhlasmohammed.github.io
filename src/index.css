@@ -195,23 +195,39 @@ main::before {
   border-bottom: 1px solid var(--line);
   display: grid;
   gap: 6%;
-  grid-template-columns: 20% 1fr 360px;
   padding: 28px 0;
+}
+.education-list article { grid-template-columns: 20% 1fr; }
+.cca-list article {
+  align-items: start;
+  grid-template-columns: 170px minmax(0, 1fr) 420px;
 }
 .list-photo {
   align-self: center;
   background: transparent;
   border: 1px solid rgb(219 237 255 / 16%);
   border-radius: 14px;
-  height: 280px;
+  height: 300px;
   object-fit: contain;
   object-position: center;
   padding: 8px;
   box-shadow: 0 12px 30px rgb(0 0 0 / 18%);
-  width: 360px;
+  width: 420px;
 }
-.cca-list article:not(:has(.list-photo)) { grid-template-columns: 20% 1fr; }
-.achievement-list article:has(.list-photo) { align-items: center; grid-template-columns: 90px 1fr 360px; }
+.list-description {
+  color: var(--muted);
+  display: grid;
+  gap: 12px;
+  list-style: disc;
+  margin: 18px 0 0 18px;
+}
+.list-description li {
+  font-size: 13px;
+  line-height: 1.75;
+  padding-left: 2px;
+}
+.cca-list article:not(:has(.list-photo)) { grid-template-columns: 170px minmax(0, 1fr); }
+.achievement-list article:has(.list-photo) { align-items: center; grid-template-columns: 90px minmax(0, 1fr) 420px; }
 .education-date, .cca-list article > span {
   color: var(--accent);
   font-size: 10px;
@@ -727,7 +743,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .cca-list article:has(.list-photo) { align-items: start; }
   .cca-list article:has(.list-photo) .list-photo {
     grid-column: 2;
-    height: 300px;
+    height: 260px;
     margin-top: 4px;
     width: 100%;
   }

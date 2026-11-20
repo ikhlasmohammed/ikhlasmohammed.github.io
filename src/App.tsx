@@ -1034,7 +1034,14 @@ function App() {
           </article>
           <article>
             <span>2026 – Present</span>
-            <div><h3>Sub Committee Member</h3><p>IT Sub Committee, Temasek Polytechnic</p></div>
+            <div>
+              <h3>Sub Committee Member</h3>
+              <p>Informatics and IT Studies Club, Temasek Polytechnic</p>
+              <ul className="list-description">
+                <li>Guided a group of 24 freshers as an Orientation Group Leader at Freshman Orientation 2026, helping the incoming AY 2026/2027 batch settle into campus life.</li>
+                <li>Worked with fellow Orientation Leaders to run orientation activities, manage schedules and coordinate logistics throughout the day.</li>
+              </ul>
+            </div>
           </article>
           <article>
             <span>2026 – Present</span>
@@ -1042,7 +1049,14 @@ function App() {
           </article>
           <article>
             <span>2025 – Present</span>
-            <div><h3>Temasek LEAD, Top 10%</h3><p>Leadership and development programme, Temasek Polytechnic</p></div>
+            <div>
+              <h3>Member, Temasek LEAD</h3>
+              <p>Leadership and development programme, Temasek Polytechnic</p>
+              <ul className="list-description">
+                <li>Strengthened teamwork and leadership skills by collaborating with peers to plan and complete group challenges at the OBS 2D1N Camp.</li>
+                <li>Built empathy and communication skills by volunteering at the Vanguard Care Home in Tampines and engaging with elderly residents.</li>
+              </ul>
+            </div>
             <img className="list-photo" src={assetUrl("/images/cca/temasek-lead.png")} alt="Temasek LEAD leadership programme" />
           </article>
           <article>
