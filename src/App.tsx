@@ -39,7 +39,7 @@ const projects: Project[] = [
     summary: "I built a cloud-based meal tracker around food image recognition.",
     description:
       "I built the AWS workflow behind a meal photo classifier, calorie tracker and daily-goal system.",
-    tools: ["AWS", "Rekognition", "Lambda", "Cognito", "RDS", "DynamoDB"],
+    tools: ["AWS", "Rekognition", "Lambda", "Cognito", "RDS", "DynamoDB", "API Gateway", "SNS", "CloudFront", "S3"],
     problem:
       "I wanted to reduce the effort of logging meals, but the app still needed to keep each user’s goal and meal history consistent.",
     built:
@@ -207,7 +207,7 @@ const projects: Project[] = [
     summary: "I built a Flutter fitness app with deterministic training advice.",
     description:
       "A Flutter app where I built workout logging, progress analysis, recommendations, authentication and navigation.",
-    tools: ["Flutter", "Dart", "Firebase", "Riverpod"],
+    tools: ["Flutter", "Dart", "Firebase", "Riverpod", "Groq API", "NETS QR"],
     problem:
       "The app needed to feel personalised without allowing an unreliable AI response to decide the actual workout numbers.",
     built:
@@ -270,6 +270,63 @@ const projects: Project[] = [
         src: "/images/overload/ai-recommendations.png",
         alt: "Overload.AI recommended next-session exercises",
         label: "AI recommendations",
+      },
+    ],
+  },
+  {
+    id: "05",
+    slug: "adoption",
+    title: "Animal Adoption Portal",
+    category: "Full-stack web application",
+    summary: "I built a public adoption listing and a protected admin management portal.",
+    description:
+      "A full-stack portal for browsing animals, viewing adoption details and managing listings with authenticated administrator access.",
+    tools: ["HTML", "CSS", "JavaScript", "Node.js", "REST APIs", "MySQL", "JWT", "bcryptjs"],
+    problem:
+      "The portal needed an easy public browsing experience while keeping animal listing changes restricted to authorised administrators.",
+    built:
+      "I built CRUD REST endpoints, SQL database queries, public and admin pages, JWT authentication and bcrypt password hashing.",
+    result:
+      "Users can browse and inspect available animals, while administrators can add, update and delete listings from a separate protected dashboard.",
+    caseStudy:
+      "I built the Animal Adoption Portal for my ADEV/DBAV module. The public website presents animal listings and opens a detail view with the species, breed, age, status and personality of each animal.\n\nI created a Node.js REST API backed by SQL and implemented create, retrieve, update and delete operations for animal records. The frontend uses HTML, CSS and JavaScript to call those endpoints and display the results.\n\nThe admin area includes a login flow, protected dashboard and listing management pages. I used JWT for authenticated requests and bcryptjs for password hashing. Database query failures and authentication or authorisation errors return clear HTTP responses without stopping the server.",
+    subject: "ADEV / DBAV",
+    role: "Full-stack application developer",
+    preview: {
+      src: "/images/adoption/home.png",
+      alt: "Animal Adoption Portal public homepage",
+      label: "Public homepage",
+    },
+    screenshots: [
+      {
+        src: "/images/adoption/home.png",
+        alt: "Animal Adoption Portal public homepage with available animals",
+        label: "Available animals",
+      },
+      {
+        src: "/images/adoption/animal-detail.png",
+        alt: "Animal Adoption Portal animal detail modal",
+        label: "Animal details",
+      },
+      {
+        src: "/images/adoption/login.png",
+        alt: "Animal Adoption Portal administrator sign-in page",
+        label: "Admin login",
+      },
+      {
+        src: "/images/adoption/admin-dashboard.png",
+        alt: "Animal Adoption Portal administrator dashboard",
+        label: "Admin dashboard",
+      },
+      {
+        src: "/images/adoption/admin-detail.png",
+        alt: "Animal Adoption Portal administrator animal detail modal",
+        label: "Admin detail view",
+      },
+      {
+        src: "/images/adoption/update-listing.png",
+        alt: "Animal Adoption Portal update listing form",
+        label: "Update listing",
       },
     ],
   },
@@ -337,6 +394,12 @@ function Mark({ type }: { type: string }) {
           <span>SET 03</span>
           <strong>65</strong>
           <small>KG · 8 REPS</small>
+        </div>
+      )}
+      {type === "adoption" && (
+        <div className="adoption-mark">
+          <span>ADOPT</span>
+          <strong>FIND A HOME</strong>
         </div>
       )}
     </div>
@@ -831,7 +894,7 @@ function App() {
             ["Frameworks & Platforms", ["Flutter", "UiPath", "AWS Cloud", "Firebase", "scikit-learn", "Node.js", "TensorFlow", "PyTorch"]],
             ["Databases", ["MySQL", "Firebase", "DynamoDB"]],
             ["Practices", ["ML model development", "RPA workflow design", "Serverless AI apps", "Mobile app development", "UI/UX prototyping", "Version control"]],
-            ["Data Analytics", ["Power BI", "KNIME", "Data cleaning & EDA", "Jupyter Notebook"]],
+            ["Data Analytics", ["Power BI", "KNIME", "Excel", "Jupyter Notebook"]],
             ["Tools", ["Git", "Figma", "Kaggle", "VS Code", "Cisco Packet Tracer", "draw.io", "Postman"]],
           ].map(([title, items]) => (
             <article className="skill-topic" key={title as string}>
@@ -866,7 +929,7 @@ function App() {
             <h2>Ideas, made useful.</h2>
           </div>
           <p>
-            Four projects across AI, automation and product design. Select one
+            Five projects across AI, automation and product design. Select one
             to explore the case study.
           </p>
         </div>
