@@ -200,11 +200,11 @@ main::before {
 }
 .list-photo {
   align-self: center;
-  background: rgb(4 8 14 / 62%);
   border: 1px solid var(--line);
   border-radius: 12px;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   width: 300px;
 }
 .cca-list article:not(:has(.list-photo)) { grid-template-columns: 20% 1fr; }
