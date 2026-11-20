@@ -990,7 +990,11 @@ function App() {
                   <span>{project.id}</span>
                   <span>{project.category}</span>
                 </div>
-                <Mark type={project.slug} />
+                <img
+                  className="project-thumbnail"
+                  src={assetUrl(`/images/thumbnails/${project.slug}.png`)}
+                  alt={`${project.title} project thumbnail`}
+                />
                 <div className="card-copy">
                   <h3>{project.title}</h3>
                   <p>{project.summary}</p>

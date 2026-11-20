@@ -373,6 +373,16 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
   overflow: hidden;
   position: relative;
 }
+.project-thumbnail {
+  background: rgb(4 8 14 / 62%);
+  border: 1px solid rgb(219 237 255 / 10%);
+  border-radius: 15px;
+  display: block;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
 .card-copy { padding: 24px 4px 10px; }
 .card-copy h3 { font: 500 clamp(23px, 2vw, 30px) 'Manrope', sans-serif; letter-spacing: -.04em; }
 .card-copy p { color: var(--muted); font-size: 12px; line-height: 1.6; min-height: 58px; padding-top: 9px; }
