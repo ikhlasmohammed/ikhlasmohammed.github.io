@@ -1014,6 +1014,9 @@ function App() {
                   {project.externalLabel} <Arrow />
                 </a>
               )}
+              {!project.externalLink && (
+                <div className="project-card-footer-spacer" aria-hidden="true" />
+              )}
             </div>
           ))}
         </div>

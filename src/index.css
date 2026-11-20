@@ -545,6 +545,10 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 }
 .project-card-item > .project-external-link svg { transition: transform .2s ease; }
 .project-card-item > .project-external-link:hover svg { transform: translate(3px, -3px); }
+.project-card-footer-spacer {
+  height: 57px;
+  margin: 0 14px 14px;
+}
 .case-meta a svg, .project-external-link svg { height: 13px; width: 13px; }
 .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .case-grid article { border-right: 1px solid var(--line); padding: 50px 45px 25px 0; }
