@@ -200,7 +200,7 @@ main::before {
 }
 .list-photo {
   align-self: center;
-  border: 1px solid var(--line);
+  background: transparent;
   border-radius: 12px;
   height: 280px;
   object-fit: contain;
