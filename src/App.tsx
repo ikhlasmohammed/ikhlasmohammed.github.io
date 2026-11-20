@@ -642,7 +642,11 @@ function ProjectDetail({
           </div>
           <p>{project.description}</p>
         </div>
-        <Mark type={project.slug} />
+        <img
+          className="detail-project-thumbnail"
+          src={assetUrl(`/images/thumbnails/${project.slug}.png`)}
+          alt={`${project.title} project preview`}
+        />
       </section>
       <section className="case-study">
         <div className="case-tools">
