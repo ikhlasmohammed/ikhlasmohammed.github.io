@@ -379,7 +379,7 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
   border-radius: 15px;
   display: block;
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   width: 100%;
 }
@@ -516,8 +516,10 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   border: 1px solid rgb(219 237 255 / 10%);
   border-radius: 15px;
   display: block;
-  height: min(52vw, 680px);
-  object-fit: cover;
+  height: min(46vw, 620px);
+  margin-inline: auto;
+  max-width: 1100px;
+  object-fit: contain;
   object-position: center;
   width: 100%;
 }
@@ -772,7 +774,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .detail-title { margin-top: 60px; }
   .detail-title h1 { font-size: 18vw; }
   .detail-hero > .project-mark { height: 70vw; }
-  .detail-project-thumbnail { height: 70vw; }
+  .detail-project-thumbnail { height: 70vw; max-width: 100%; }
   .case-tools { gap: 30px; grid-template-columns: 1fr; }
   .case-meta { align-items: flex-start; flex-direction: column; gap: 20px; }
   .case-meta a { margin-left: 0; }
