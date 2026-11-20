@@ -1030,6 +1030,7 @@ function App() {
           <article>
             <span>2026 – Present</span>
             <div><h3>Vice President</h3><p>Applied Artificial Intelligence Student Interest Group, Temasek Polytechnic</p></div>
+            <img className="list-photo" src={assetUrl("/images/cca/vice-president.png")} alt="Vice President of the Applied Artificial Intelligence Student Interest Group" />
           </article>
           <article>
             <span>2026 – Present</span>
@@ -1042,6 +1043,7 @@ function App() {
           <article>
             <span>2025 – Present</span>
             <div><h3>Temasek LEAD, Top 10%</h3><p>Leadership and development programme, Temasek Polytechnic</p></div>
+            <img className="list-photo" src={assetUrl("/images/cca/temasek-lead.png")} alt="Temasek LEAD leadership programme" />
           </article>
           <article>
             <span>2025 – 2026</span>
@@ -1050,6 +1052,7 @@ function App() {
           <article>
             <span>2021 – 2024</span>
             <div><h3>Master Sergeant / NCC (Air)</h3><p>Changkat Changi Secondary School</p></div>
+            <img className="list-photo" src={assetUrl("/images/cca/master-sergeant.png")} alt="Master Sergeant in NCC Air" />
           </article>
         </div>
       </section>
@@ -1060,12 +1063,12 @@ function App() {
           <h2>Recognition earned.</h2>
         </div>
         <div className="achievement-list">
-          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition, team of four, retail demand forecasting pipeline and web app in two days.</p></div></article>
+          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition, team of four, retail demand forecasting pipeline and web app in two days.</p></div><img className="list-photo" src={assetUrl("/images/achievements/merit-award.png")} alt="Merit Award certificate" /></article>
           <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic, top 25% of the cohort.</p></div></article>
-          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div></article>
+          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div><img className="list-photo" src={assetUrl("/images/achievements/polyfintech-api.png")} alt="PolyFinTech100 API Hackathon project" /></article>
           <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School, top-tier leadership and service.</p></div></article>
-          <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
-          <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div></article>
+          <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-cadet-award.png")} alt="Outstanding Cadet award" /></article>
+          <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-service-award.png")} alt="Outstanding Service Award" /></article>
           <article><span>2022</span><div><h3>Best Senior Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
         </div>
       </section>

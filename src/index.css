@@ -195,9 +195,18 @@ main::before {
   border-bottom: 1px solid var(--line);
   display: grid;
   gap: 10%;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 20% 1fr 180px;
   padding: 28px 0;
 }
+.list-photo {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  height: 120px;
+  object-fit: cover;
+  width: 180px;
+}
+.cca-list article:not(:has(.list-photo)) { grid-template-columns: 20% 1fr; }
+.achievement-list article:has(.list-photo) { grid-template-columns: 90px 1fr 180px; }
 .education-date, .cca-list article > span {
   color: var(--accent);
   font-size: 10px;
@@ -709,6 +718,14 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .goals-grid { grid-template-columns: 1fr; gap: 42px; }
   .skills-grid { grid-template-columns: 1fr; gap: 28px; }
   .education-list article, .cca-list article { gap: 16px; grid-template-columns: 112px 1fr; }
+  .cca-list article { grid-template-columns: 112px 1fr; }
+  .cca-list article:has(.list-photo) { align-items: start; }
+  .cca-list article:has(.list-photo) .list-photo {
+    grid-column: 2;
+    height: 150px;
+    margin-top: 4px;
+    width: 100%;
+  }
   .certification-list li { grid-template-columns: 100px 1fr; }
   .hero { min-height: auto; padding-top: 24px; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 16px 0 0; }
@@ -746,6 +763,12 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .achievement-list article {
     gap: 14px;
     padding: 14px 0;
+  }
+  .achievement-list article:has(.list-photo) { grid-template-columns: 112px 1fr; }
+  .achievement-list article:has(.list-photo) .list-photo {
+    grid-column: 2;
+    height: 180px;
+    width: 100%;
   }
   .achievement-list article div { gap: 4px; }
   .achievement-list { grid-template-columns: 1fr; }
