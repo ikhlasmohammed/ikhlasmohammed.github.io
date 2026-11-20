@@ -290,7 +290,7 @@ const projects: Project[] = [
       "Users can browse and inspect available animals, while administrators can add, update and delete listings from a separate protected dashboard.",
     caseStudy:
       "I built the Animal Adoption Portal for my ADEV/DBAV module. The public website presents animal listings and opens a detail view with the species, breed, age, status and personality of each animal.\n\nI created a Node.js REST API backed by SQL and implemented create, retrieve, update and delete operations for animal records. The frontend uses HTML, CSS and JavaScript to call those endpoints and display the results.\n\nThe admin area includes a login flow, protected dashboard and listing management pages. I used JWT for authenticated requests and bcryptjs for password hashing. Database query failures and authentication or authorisation errors return clear HTTP responses without stopping the server.",
-    subject: "ADEV / DBAV",
+    subject: "Application / Database Development",
     role: "Full-stack application developer",
     preview: {
       src: "/images/adoption/home.png",
@@ -327,6 +327,43 @@ const projects: Project[] = [
         src: "/images/adoption/update-listing.png",
         alt: "Animal Adoption Portal update listing form",
         label: "Update listing",
+      },
+    ],
+  },
+  {
+    id: "06",
+    slug: "dsag",
+    title: "Data Structures and Algorithms",
+    category: "Systems design",
+    summary: "I designed queue simulations and an outlet layout using data structures.",
+    description:
+      "A Subway crowd-management assignment comparing Queue, dual-Queue and Linked List approaches, with revised outlet planning for CafeX.",
+    tools: ["Python", "Queues", "Linked Lists", "Big-O Analysis", "Draw.io"],
+    problem:
+      "The assignment needed to model lunch-hour crowding at Subway while keeping the ordering counter and connected spaces easy to navigate.",
+    built:
+      "I simulated a 20-person queue, an alternating dual-queue system and a linked-list alternative, then designed a revised layout with a separate entry and exit.",
+    result:
+      "The diagrams and analysis compare linear-time processing, FIFO behaviour, dynamic capacity and the practical impact of queue design during peak periods.",
+    caseStudy:
+      "I completed the Data Structures and Algorithms assignment by modelling the crowd around the Subway outlet at Temasek Polytechnic. I selected the front entrance, rear entrance and back seating area as interconnected spaces.\n\nThe first diagram represents a 20-person queue extending from the Subway ordering counter across the connected areas. I then implemented the queue behaviour in Python, demonstrated full-queue and dequeue handling, and compared a single queue with an alternating dual-queue system.\n\nFor the revised design, I replaced fixed queue containers with a linked-list model and proposed CafeX with one entrance and one exit. The final layout separates entry and exit traffic, uses a linked list for ordering, and uses digital pre-orders to reduce crowding near Subway and Triplets.",
+    subject: "Data Structures and Algorithms",
+    role: "Algorithm and systems designer",
+    preview: {
+      src: "/images/dsag/cafex-layout.png",
+      alt: "CafeX revised outlet layout diagram",
+      label: "CafeX layout",
+    },
+    screenshots: [
+      {
+        src: "/images/dsag/queue-layout.png",
+        alt: "Subway queue diagram across three interconnected spaces",
+        label: "Queue layout",
+      },
+      {
+        src: "/images/dsag/cafex-layout.png",
+        alt: "Revised outlet layout showing CafeX, Subway and Triplets",
+        label: "CafeX layout",
       },
     ],
   },
@@ -400,6 +437,12 @@ function Mark({ type }: { type: string }) {
         <div className="adoption-mark">
           <span>ADOPT</span>
           <strong>FIND A HOME</strong>
+        </div>
+      )}
+      {type === "dsag" && (
+        <div className="dsag-mark">
+          <span>QUEUE [20]</span>
+          <strong>DSAG</strong>
         </div>
       )}
     </div>
@@ -929,7 +972,7 @@ function App() {
             <h2>Ideas, made useful.</h2>
           </div>
           <p>
-            Five projects across AI, automation and product design. Select one
+            Six projects across AI, automation and product design. Select one
             to explore the case study.
           </p>
         </div>

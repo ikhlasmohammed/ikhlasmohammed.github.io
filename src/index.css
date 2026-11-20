@@ -304,7 +304,16 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
   margin-top: 20px;
 }
 .section-intro > p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 390px; }
-.project-row { border-left: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.project-row {
+  border-left: 1px solid var(--line);
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+  -webkit-overflow-scrolling: touch;
+}
 .project-card-item {
   background: var(--glass);
   border: 1px solid var(--line);
@@ -312,6 +321,7 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
   box-shadow: inset 0 1px rgb(255 255 255 / 9%);
   display: flex;
   flex-direction: column;
+  flex: 0 0 calc(25% - 1px);
   min-width: 0;
   overflow: hidden;
   position: relative;
@@ -398,6 +408,9 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
 .adoption-mark { align-items: flex-start; display: flex; flex-direction: column; height: 100%; justify-content: center; padding-left: 10%; }
 .adoption-mark span { color: var(--accent); font-size: 11px; letter-spacing: .18em; }
 .adoption-mark strong { color: var(--text); font: 500 clamp(30px, 5vw, 72px)/.95 'Manrope'; letter-spacing: -.06em; margin-top: 12px; }
+.dsag-mark { align-items: flex-start; display: flex; flex-direction: column; height: 100%; justify-content: center; padding-left: 12%; }
+.dsag-mark span { color: var(--accent); font-size: 11px; letter-spacing: .16em; }
+.dsag-mark strong { color: var(--text); font: 500 clamp(48px, 7vw, 110px)/.9 'Manrope'; letter-spacing: -.08em; margin-top: 16px; }
 
 .endeavours-section { border-top: 1px solid var(--line); padding-bottom: 130px; padding-top: 130px; }
 .about-copy { align-items: end; display: grid; gap: 6%; grid-template-columns: 1.3fr 1fr; margin-bottom: 64px; }
@@ -650,7 +663,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     color: var(--text);
   }
   .hero-copy { align-self: stretch; }
-  .project-row { grid-template-columns: repeat(2, 1fr); }
+  .project-card-item { flex-basis: 48%; }
   .section-intro { align-items: flex-start; flex-direction: column; gap: 30px; }
   .detail-title { grid-template-columns: 1fr; gap: 35px; }
   .lightbox-prev { left: 10px; }
