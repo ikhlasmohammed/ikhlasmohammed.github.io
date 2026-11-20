@@ -307,12 +307,62 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
 .project-row {
   border-left: 1px solid var(--line);
   display: flex;
+  gap: 16px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
   -webkit-overflow-scrolling: touch;
+}
+.project-carousel-controls {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 390px;
+}
+.project-carousel-controls > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: right;
+}
+.carousel-actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+.carousel-progress {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .12em;
+  margin-right: 8px;
+  min-width: 34px;
+  text-align: right;
+}
+.carousel-actions button {
+  align-items: center;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--text);
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+  width: 44px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .carousel-actions button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+}
+.carousel-actions button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 .project-card-item {
   background: var(--glass);
@@ -321,7 +371,7 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
   box-shadow: inset 0 1px rgb(255 255 255 / 9%);
   display: flex;
   flex-direction: column;
-  flex: 0 0 calc(25% - 1px);
+  flex: 0 0 calc((100% - 32px) / 3);
   min-width: 0;
   overflow: hidden;
   position: relative;
@@ -672,6 +722,9 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .hero-copy { align-self: stretch; }
   .project-card-item { flex-basis: 48%; }
   .section-intro { align-items: flex-start; flex-direction: column; gap: 30px; }
+  .project-carousel-controls { align-items: flex-start; max-width: none; width: 100%; }
+  .project-carousel-controls > p { text-align: left; }
+  .carousel-actions { align-self: flex-end; }
   .detail-title { grid-template-columns: 1fr; gap: 35px; }
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
@@ -703,7 +756,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .hero-bottom { margin-left: 0; }
   .hero-links { flex-wrap: wrap; }
   .project-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
-  .project-card-item { flex: 0 0 86vw; scroll-snap-align: start; }
+  .project-card-item { flex: 0 0 82vw; scroll-snap-align: start; }
   .work-section { padding-bottom: 85px; padding-top: 85px; }
   .oceanx-section { padding-bottom: 75px; padding-top: 90px; }
   .oceanx-intro { align-items: flex-start; flex-direction: column; gap: 28px; margin-bottom: 50px; }
