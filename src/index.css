@@ -201,10 +201,13 @@ main::before {
 .list-photo {
   align-self: center;
   background: transparent;
-  border-radius: 12px;
+  border: 1px solid rgb(219 237 255 / 16%);
+  border-radius: 14px;
   height: 280px;
   object-fit: contain;
   object-position: center;
+  padding: 8px;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 18%);
   width: 360px;
 }
 .cca-list article:not(:has(.list-photo)) { grid-template-columns: 20% 1fr; }
