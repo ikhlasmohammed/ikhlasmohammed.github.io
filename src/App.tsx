@@ -402,7 +402,6 @@ const ccaEntries: TimelineEntry[] = [
     title: "Sub Committee Member",
     organisation: "Informatics and IT Studies Club (IITSC), Temasek Polytechnic",
     points: [
-      "Guided a group of 24 freshers as an Orientation Group Leader at Freshman Orientation 2026, helping the incoming AY 2026/2027 batch settle into campus life.",
       "Took part in the club’s Annual General Meeting and Sub-committee Welcome Day, connecting with fellow committee members and the wider IT student community.",
     ],
     photo: {
