@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 type Screenshot = { src: string; alt: string; label: string }
 
@@ -368,6 +368,340 @@ const projects: Project[] = [
     ],
   },
 ]
+
+type Photo = { src: string; alt: string; position?: string }
+type LightboxPhoto = Photo & { caption: string }
+
+type TimelineEntry = {
+  date: string
+  title: string
+  organisation: string
+  description?: string
+  points?: string[]
+  photo?: Photo
+}
+
+const ccaEntries: TimelineEntry[] = [
+  {
+    date: "2026 – Present",
+    title: "Vice President",
+    organisation: "Applied Artificial Intelligence Student Interest Group (AAISIG), Temasek Polytechnic",
+    points: [
+      "Lead the AAISIG committee in planning and running activities that help Applied AI students learn beyond the classroom.",
+      "Organised a company visit to Amazon Web Services (AWS), giving members first-hand exposure to how AI and cloud technology are used in industry.",
+      "Organised a hands-on Linux workshop so members could build practical command-line skills.",
+      "Represented AAISIG at Digital Kampung by running a booth with an interactive game that taught visitors how to tell AI-generated content apart from real content.",
+    ],
+    photo: {
+      src: "/images/cca/vice-president.png",
+      alt: "Vice President of the Applied Artificial Intelligence Student Interest Group",
+    },
+  },
+  {
+    date: "2026 – Present",
+    title: "Sub Committee Member",
+    organisation: "Informatics and IT Studies Club (IITSC), Temasek Polytechnic",
+    points: [
+      "Guided a group of 24 freshers as an Orientation Group Leader at Freshman Orientation 2026, helping the incoming AY 2026/2027 batch settle into campus life.",
+      "Took part in the club’s Annual General Meeting and Sub-committee Welcome Day, connecting with fellow committee members and the wider IT student community.",
+    ],
+    photo: {
+      src: "/images/cca/iitsc-sub-committee.png",
+      alt: "Informatics and IT Studies Club event in a Temasek Polytechnic lecture theatre",
+    },
+  },
+  {
+    date: "2025 – Present",
+    title: "Member, Temasek LEAD",
+    organisation: "Leadership development programme (top 10% of cohort), Temasek Polytechnic",
+    points: [
+      "Strengthened teamwork and leadership skills by collaborating with peers to plan and complete group challenges at the OBS 2D1N Camp.",
+      "Visited Nanyang Technological University (NTU) to learn about student life, scholarships and the opportunities available to undergraduates.",
+    ],
+    photo: {
+      src: "/images/cca/temasek-lead.png",
+      alt: "Temasek LEAD leadership programme",
+    },
+  },
+  {
+    date: "2025 – 2026",
+    title: "Class and Sports Representative",
+    organisation: "Temasek Polytechnic",
+    points: [
+      "Kept the class informed of project deadlines, lesson schedule changes and other important administrative matters.",
+      "Served as the lecturers’ main point of contact for anything related to the class.",
+      "As Sports Representative, looked after the class’s sports equipment and made sure everything was returned after each session.",
+      "Helped the sports lecturer demonstrate frisbee techniques to classmates.",
+    ],
+  },
+  {
+    date: "2021 – 2024",
+    title: "Master Sergeant, NCC (Air)",
+    organisation: "National Cadet Corps, Changkat Changi Secondary School",
+    points: [
+      "Served as Master Sergeant and Assistant Sergeant Major (2023–24), commanding parades as Parade Commander at the school’s NDOC and NCC Day, and as Regimental Sergeant Major at the Simei CC NDOC.",
+      "Instructed and choreographed routines as an FSD Instructor, and graduated from the Senior Specialist Leadership Course.",
+      "Coached junior cadets in discipline and personal growth as a Certified Mentor (2024), and captained the NCC football and frisbee teams.",
+    ],
+    photo: {
+      src: "/images/cca/master-sergeant.png",
+      alt: "Master Sergeant in NCC Air",
+    },
+  },
+]
+
+const achievementEntries: TimelineEntry[] = [
+  {
+    date: "2026",
+    title: "Merit Award",
+    organisation: "HKIIT International Competition, Hong Kong",
+    description:
+      "Built a retail demand forecasting machine learning pipeline and web app in two days with a team of four.",
+    photo: {
+      src: "/images/achievements/merit-award.png",
+      alt: "Merit Award certificate",
+    },
+  },
+  {
+    date: "2026",
+    title: "Certificate of Academic Achievement",
+    organisation: "Temasek Polytechnic",
+    description: "Awarded for academic performance in the top 25% of the cohort.",
+    photo: {
+      src: "/images/achievements/academic-achievement.jpg",
+      alt: "Edusave Merit Bursary 2026 certificate",
+      position: "center 28%",
+    },
+  },
+  {
+    date: "2024",
+    title: "Top in Class",
+    organisation: "Changkat Changi Secondary School",
+    description: "Ranked 1st in class 4C in the 2024 Preliminary Examinations.",
+    photo: {
+      src: "/images/achievements/top-in-class-2024.png",
+      alt: "Receiving the 1st in class Certificate of Achievement on stage",
+      position: "center 30%",
+    },
+  },
+  {
+    date: "2024",
+    title: "EAGLES Award",
+    organisation: "Changkat Changi Secondary School",
+    description:
+      "Edusave Award for Achievement, Good Leadership and Service, recognising top-tier leadership, service and conduct.",
+    photo: {
+      src: "/images/achievements/eagles-award.jpg",
+      alt: "EAGLES Award 2024 certificate",
+      position: "center 28%",
+    },
+  },
+  {
+    date: "2024",
+    title: "Outstanding Cadet",
+    organisation: "NCC (Air), Changkat Changi Secondary School",
+    description: "Awarded by the National Cadet Corps for outstanding performance and dedication.",
+    photo: {
+      src: "/images/achievements/outstanding-cadet-award.png",
+      alt: "Outstanding Cadet award",
+    },
+  },
+  {
+    date: "2024",
+    title: "Outstanding Service Award",
+    organisation: "Changkat Changi Secondary School",
+    description: "Awarded for outstanding service to the school.",
+    photo: {
+      src: "/images/achievements/outstanding-service-award.png",
+      alt: "Outstanding Service Award",
+    },
+  },
+  {
+    date: "2022",
+    title: "Best Senior Cadet",
+    organisation: "NCC (Air), Changkat Changi Secondary School",
+    description:
+      "Awarded for the best performance among senior cadets, presented at the NCC (Air) Passing Out Parade 2023.",
+    photo: {
+      src: "/images/achievements/best-senior-cadet.jpg",
+      alt: "Best Senior Cadet 2022 certificate",
+      position: "center 28%",
+    },
+  },
+]
+
+function TimelineList({
+  entries,
+  className,
+  onOpenPhoto,
+}: {
+  entries: TimelineEntry[]
+  className: string
+  onOpenPhoto: (photo: LightboxPhoto) => void
+}) {
+  return (
+    <div className={`timeline-list ${className}`}>
+      {entries.map((entry) => (
+        <article
+          className={`timeline-entry${entry.photo ? " has-photo" : ""}`}
+          key={entry.title}
+        >
+          <span className="timeline-date">{entry.date}</span>
+          <div className="timeline-body">
+            <h3>{entry.title}</h3>
+            <p className="timeline-org">{entry.organisation}</p>
+            {entry.description && (
+              <p className="timeline-description">{entry.description}</p>
+            )}
+            {entry.points && (
+              <ul className="list-description">
+                {entry.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {entry.photo && (
+            <button
+              className="list-photo-button"
+              type="button"
+              onClick={() =>
+                entry.photo && onOpenPhoto({ ...entry.photo, caption: entry.title })
+              }
+              aria-label={`Enlarge photo: ${entry.title}`}
+            >
+              <img
+                className="list-photo"
+                src={assetUrl(entry.photo.src)}
+                alt={entry.photo.alt}
+                loading="lazy"
+                decoding="async"
+                style={{ objectPosition: entry.photo.position }}
+              />
+            </button>
+          )}
+        </article>
+      ))}
+    </div>
+  )
+}
+
+function PhotoLightbox({
+  photo,
+  close,
+}: {
+  photo: LightboxPhoto
+  close: () => void
+}) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const trigger = document.activeElement as HTMLElement | null
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    closeButtonRef.current?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close()
+      if (event.key === "Tab") {
+        event.preventDefault()
+        closeButtonRef.current?.focus()
+      }
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKeyDown)
+      trigger?.focus({ preventScroll: true })
+    }
+  }, [close])
+
+  return (
+    <div
+      className="screenshot-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${photo.caption} enlarged photo`}
+      onClick={close}
+    >
+      <div className="lightbox-content" onClick={(event) => event.stopPropagation()}>
+        <button
+          className="lightbox-close"
+          ref={closeButtonRef}
+          type="button"
+          onClick={close}
+          aria-label="Close enlarged photo"
+        >
+          ×
+        </button>
+        <img src={assetUrl(photo.src)} alt={photo.alt} decoding="async" />
+        <div className="lightbox-caption">
+          <p>{photo.caption}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const revealSelector = [
+  ".hero-copy",
+  ".hero-portrait",
+  ".cv-section-heading",
+  ".section-intro",
+  ".goals-lead",
+  ".goals-list article",
+  ".education-list article",
+  ".skill-topic",
+  ".certification-list li",
+  ".project-row",
+  ".timeline-entry",
+  ".footer-main",
+  ".footer-bottom",
+  ".detail-title",
+  ".case-tools",
+  ".case-meta",
+  ".case-grid article",
+  ".case-story",
+  ".project-screens-intro",
+  ".project-screens figure",
+  ".next-project",
+].join(", ")
+
+/** Fades elements in as they scroll into view. Elements entering together are staggered. */
+function useScrollReveal(key: unknown) {
+  useEffect(() => {
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return
+    }
+
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>(revealSelector),
+    ).filter((element) => !element.classList.contains("is-visible"))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, index) => {
+            const element = entry.target as HTMLElement
+            element.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 90}ms`)
+            element.classList.add("is-visible")
+            observer.unobserve(element)
+          })
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    )
+
+    elements.forEach((element) => {
+      element.classList.add("reveal")
+      observer.observe(element)
+    })
+    return () => observer.disconnect()
+  }, [key])
+}
 
 function Arrow({ direction = "up" }: { direction?: "up" | "left" }) {
   return direction === "left" ? (
@@ -830,12 +1164,16 @@ function App() {
     return projects.find((project) => project.slug === slug) ?? null
   }
   const [selected, setSelected] = useState<Project | null>(getSelected)
+  const [lightboxPhoto, setLightboxPhoto] = useState<LightboxPhoto | null>(null)
+  const closeLightbox = useCallback(() => setLightboxPhoto(null), [])
 
   useEffect(() => {
     const onHashChange = () => setSelected(getSelected())
     window.addEventListener("hashchange", onHashChange)
     return () => window.removeEventListener("hashchange", onHashChange)
   }, [])
+
+  useScrollReveal(selected)
 
   if (selected) {
     return (
@@ -1026,49 +1364,11 @@ function App() {
           <p className="eyebrow">07 / Co-curricular activities</p>
           <h2>Leadership in practice.</h2>
         </div>
-        <div className="cca-list">
-          <article>
-            <span>2026 – Present</span>
-            <div><h3>Vice President</h3><p>Applied Artificial Intelligence Student Interest Group, Temasek Polytechnic</p></div>
-            <img className="list-photo" src={assetUrl("/images/cca/vice-president.png")} alt="Vice President of the Applied Artificial Intelligence Student Interest Group" />
-          </article>
-          <article>
-            <span>2026 – Present</span>
-            <div>
-              <h3>Sub Committee Member</h3>
-              <p>Informatics and IT Studies Club, Temasek Polytechnic</p>
-              <ul className="list-description">
-                <li>Guided a group of 24 freshers as an Orientation Group Leader at Freshman Orientation 2026, helping the incoming AY 2026/2027 batch settle into campus life.</li>
-                <li>Worked with fellow Orientation Leaders to run orientation activities, manage schedules and coordinate logistics throughout the day.</li>
-              </ul>
-            </div>
-          </article>
-          <article>
-            <span>2026 – Present</span>
-            <div><h3>STAR Ambassador</h3><p>Temasek Polytechnic</p></div>
-          </article>
-          <article>
-            <span>2025 – Present</span>
-            <div>
-              <h3>Member, Temasek LEAD</h3>
-              <p>Leadership and development programme, Temasek Polytechnic</p>
-              <ul className="list-description">
-                <li>Strengthened teamwork and leadership skills by collaborating with peers to plan and complete group challenges at the OBS 2D1N Camp.</li>
-                <li>Built empathy and communication skills by volunteering at the Vanguard Care Home in Tampines and engaging with elderly residents.</li>
-              </ul>
-            </div>
-            <img className="list-photo" src={assetUrl("/images/cca/temasek-lead.png")} alt="Temasek LEAD leadership programme" />
-          </article>
-          <article>
-            <span>2025 – 2026</span>
-            <div><h3>Class and Sports Representative</h3><p>Temasek Polytechnic</p></div>
-          </article>
-          <article>
-            <span>2021 – 2024</span>
-            <div><h3>Master Sergeant / NCC (Air)</h3><p>Changkat Changi Secondary School</p></div>
-            <img className="list-photo" src={assetUrl("/images/cca/master-sergeant.png")} alt="Master Sergeant in NCC Air" />
-          </article>
-        </div>
+        <TimelineList
+          entries={ccaEntries}
+          className="cca-list"
+          onOpenPhoto={setLightboxPhoto}
+        />
       </section>
 
       <section className="achievements-section cv-section" id="achievements">
@@ -1076,15 +1376,11 @@ function App() {
           <p className="eyebrow">08 / Achievements</p>
           <h2>Recognition earned.</h2>
         </div>
-        <div className="achievement-list">
-          <article><span>2026</span><div><h3>Merit Award</h3><p>HKIIT International Competition, team of four, retail demand forecasting pipeline and web app in two days.</p></div><img className="list-photo" src={assetUrl("/images/achievements/merit-award.png")} alt="Merit Award certificate" /></article>
-          <article><span>2026</span><div><h3>Certificate of Academic Achievement</h3><p>Temasek Polytechnic, top 25% of the cohort.</p></div></article>
-          <article><span>2026</span><div><h3>PolyFinTech100 API Hackathon</h3><p>Temasek Polytechnic, participated in the Prudential / Insurtech category.</p></div></article>
-          <article><span>2024</span><div><h3>EAGLES Award</h3><p>Changkat Changi Secondary School, top-tier leadership and service.</p></div></article>
-          <article><span>2024</span><div><h3>Outstanding Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-cadet-award.png")} alt="Outstanding Cadet award" /></article>
-          <article><span>2024</span><div><h3>Outstanding Service Award</h3><p>Changkat Changi Secondary School.</p></div><img className="list-photo" src={assetUrl("/images/achievements/outstanding-service-award.png")} alt="Outstanding Service Award" /></article>
-          <article><span>2022</span><div><h3>Best Senior Cadet</h3><p>NCC (Air), Changkat Changi Secondary School.</p></div></article>
-        </div>
+        <TimelineList
+          entries={achievementEntries}
+          className="achievement-list"
+          onOpenPhoto={setLightboxPhoto}
+        />
       </section>
 
       <footer id="contact">
@@ -1112,6 +1408,9 @@ function App() {
           <span>© 2026</span>
         </div>
       </footer>
+      {lightboxPhoto && (
+        <PhotoLightbox photo={lightboxPhoto} close={closeLightbox} />
+      )}
     </main>
   )
 }

@@ -188,58 +188,123 @@ main::before {
 .goals-list article:first-child { border-top: 1px solid var(--line); }
 .goals-list article span { color: var(--accent); font-size: 10px; }
 .goals-list article p { color: var(--muted); font-size: 14px; line-height: 1.75; }
-.education-list, .cca-list {
+.education-list {
   border-top: 1px solid var(--line);
 }
-.education-list article, .cca-list article {
+.education-list article {
   border-bottom: 1px solid var(--line);
   display: grid;
   gap: 6%;
+  grid-template-columns: 20% 1fr;
   padding: 28px 0;
 }
-.education-list article { grid-template-columns: 20% 1fr; }
-.cca-list article {
-  align-items: start;
-  grid-template-columns: 170px minmax(0, 1fr) 420px;
+.education-date {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
-.list-photo {
-  align-self: center;
-  background: transparent;
-  border: 1px solid rgb(219 237 255 / 16%);
-  border-radius: 14px;
-  height: 300px;
-  object-fit: cover;
-  object-position: center;
-  width: 420px;
+.education-list h3 {
+  font: 500 clamp(22px, 2.2vw, 32px) 'Manrope', sans-serif;
+  letter-spacing: -.04em;
+}
+.education-list p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+/* Shared timeline layout for co-curricular activities and achievements */
+.timeline-list {
+  border-top: 1px solid var(--line);
+}
+.timeline-entry {
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  column-gap: clamp(28px, 4vw, 64px);
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  padding: 36px 0;
+}
+.timeline-entry.has-photo {
+  grid-template-columns: 150px minmax(0, 1fr) min(420px, 32vw);
+}
+.timeline-date {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: .12em;
+  line-height: 1.6;
+  padding-top: 8px;
+  text-transform: uppercase;
+}
+.timeline-body h3 {
+  font: 500 clamp(22px, 2.2vw, 30px)/1.15 'Manrope', sans-serif;
+  letter-spacing: -.04em;
+}
+.timeline-org {
+  color: #c4cdd6;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.timeline-description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+  margin-top: 14px;
+  max-width: 560px;
 }
 .list-description {
   color: var(--muted);
   display: grid;
-  gap: 12px;
+  gap: 10px;
   list-style: disc;
   margin: 18px 0 0 18px;
+  max-width: 640px;
 }
 .list-description li {
   font-size: 13px;
   line-height: 1.75;
   padding-left: 2px;
 }
-.cca-list article:not(:has(.list-photo)) { grid-template-columns: 170px minmax(0, 1fr); }
-.achievement-list article:has(.list-photo) { align-items: center; grid-template-columns: 90px minmax(0, 1fr) 420px; }
-.education-date, .cca-list article > span {
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+.list-description li::marker { color: var(--accent); }
+.list-photo-button {
+  background: transparent;
+  border: 1px solid rgb(219 237 255 / 16%);
+  border-radius: 14px;
+  cursor: zoom-in;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  transition: border-color .25s ease;
+  width: 100%;
 }
-.education-list h3, .cca-list h3 {
-  font: 500 clamp(22px, 2.2vw, 32px) 'Manrope', sans-serif;
-  letter-spacing: -.04em;
+.list-photo-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.list-photo {
+  aspect-ratio: 7 / 5;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+  width: 100%;
 }
-.education-list p, .cca-list p {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 7px;
+@media (hover: hover) and (pointer: fine) {
+  .list-photo-button:hover { border-color: rgb(169 239 207 / 45%); }
+  .list-photo-button:hover .list-photo { transform: scale(1.03); }
+}
+
+/* Scroll reveal: classes are added by useScrollReveal, so content stays visible without JS */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity .9s cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms),
+    transform .9s cubic-bezier(.16, 1, .3, 1) var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 .education-list div > span {
   color: #c9d0c9;
@@ -480,19 +545,6 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
 .achievements-intro { align-items: end; display: flex; justify-content: space-between; margin-bottom: 72px; }
 .achievements-intro h2 { font: 500 clamp(42px, 5vw, 70px)/1 'Manrope', sans-serif; letter-spacing: -.055em; margin-top: 20px; }
 .achievements-intro > p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 390px; }
-.achievement-list { border-top: 1px solid var(--line); }
-.achievement-list article {
-  align-items: baseline;
-  border-bottom: 1px solid var(--line);
-  display: grid;
-  gap: 28px;
-  grid-template-columns: 90px 1fr;
-  padding: 22px 0;
-}
-.achievement-list article > span { color: var(--accent); font-size: 11px; }
-.achievement-list h3 { font: 500 clamp(18px, 2vw, 26px) 'Manrope'; letter-spacing: -.04em; }
-.achievement-list article div { display: grid; gap: 7px; }
-.achievement-list article p { color: var(--muted); font-size: 13px; line-height: 1.65; }
 .achievement-feature-grid { display: grid; gap: 12px; grid-template-columns: 1.2fr .8fr; margin-bottom: 12px; }
 .achievement-feature-grid figure { background: var(--glass); border: 1px solid var(--line); border-radius: 16px; margin: 0; overflow: hidden; position: relative; }
 .achievement-feature-grid img { display: block; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); width: 100%; }
@@ -638,9 +690,6 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .hero-links {
     margin-left: auto;
   }
-  .achievement-list article:last-child {
-    grid-column: 2;
-  }
   .project-screens-grid-audit figure:last-child { grid-column: 2; }
 }
 .next-project { border-top: 1px solid var(--line); padding-bottom: 90px; padding-top: 80px; }
@@ -714,6 +763,16 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     color: var(--text);
   }
   .hero-copy { align-self: stretch; }
+  /* Tablet: photo drops beneath the text, aligned to the content column */
+  .timeline-entry,
+  .timeline-entry.has-photo {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+  .timeline-entry .list-photo-button {
+    grid-column: 2;
+    margin-top: 24px;
+    max-width: 560px;
+  }
   .project-card-item { flex-basis: 48%; }
   .section-intro { align-items: flex-start; flex-direction: column; gap: 30px; }
   .detail-title { grid-template-columns: 1fr; gap: 35px; }
@@ -736,15 +795,24 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   }
   .goals-grid { grid-template-columns: 1fr; gap: 42px; }
   .skills-grid { grid-template-columns: 1fr; gap: 28px; }
-  .education-list article, .cca-list article { gap: 16px; grid-template-columns: 112px 1fr; }
-  .cca-list article { grid-template-columns: 112px 1fr; }
-  .cca-list article:has(.list-photo) { align-items: start; }
-  .cca-list article:has(.list-photo) .list-photo {
-    grid-column: 2;
-    height: 260px;
-    margin-top: 4px;
-    width: 100%;
+  .education-list article { gap: 16px; grid-template-columns: 112px 1fr; }
+  /* Mobile: one column, date → title → details → full-width photo */
+  .timeline-entry,
+  .timeline-entry.has-photo {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 30px 0;
   }
+  .timeline-date { padding-top: 0; margin-bottom: 10px; }
+  .timeline-body h3 { font-size: 23px; }
+  .timeline-org { font-size: 13px; margin-top: 6px; }
+  .timeline-description { margin-top: 12px; }
+  .list-description { gap: 8px; margin-top: 14px; }
+  .timeline-entry .list-photo-button {
+    grid-column: 1;
+    margin-top: 22px;
+    max-width: none;
+  }
+  .list-photo { aspect-ratio: 4 / 3; }
   .certification-list li { grid-template-columns: 100px 1fr; }
   .hero { min-height: auto; padding-top: 24px; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 16px 0 0; }
@@ -779,19 +847,6 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .achievement-feature-grid { grid-template-columns: 1fr; }
   .achievement-feature { min-height: 420px; }
   .achievement-photo-stack figure { min-height: 220px; }
-  .achievement-list article {
-    gap: 14px;
-    padding: 14px 0;
-  }
-  .achievement-list article:has(.list-photo) { grid-template-columns: 112px 1fr; }
-  .achievement-list article:has(.list-photo) .list-photo {
-    grid-column: 2;
-    height: 320px;
-    width: 100%;
-  }
-  .achievement-list article div { gap: 4px; }
-  .achievement-list { grid-template-columns: 1fr; }
-  .achievement-list article { border-left: 0; min-height: 0; }
   .footer-main { align-items: flex-start; flex-direction: column; gap: 60px; }
   .footer-main a { font-size: 11px; gap: 15px; }
   .contact-links {
@@ -826,4 +881,5 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
 }
