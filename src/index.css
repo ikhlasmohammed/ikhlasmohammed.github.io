@@ -289,6 +289,11 @@ main::before {
   transition: transform .6s cubic-bezier(.2, .7, .2, 1);
   width: 100%;
 }
+/* Achievement photos show the whole image at its natural aspect ratio (no cropping) */
+.achievement-list .list-photo {
+  aspect-ratio: auto;
+  height: auto;
+}
 @media (hover: hover) and (pointer: fine) {
   .list-photo-button:hover { border-color: rgb(169 239 207 / 45%); }
   .list-photo-button:hover .list-photo { transform: scale(1.03); }
