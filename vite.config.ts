@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: process.env.GITHUB_PAGES
-      ? "/mohammed-ikhlas-portfolio/"
+      ? "/"
       : process.env.FIGMA_PUBLIC_URL
         ? `${process.env.FIGMA_PUBLIC_URL}/`
         : "/",

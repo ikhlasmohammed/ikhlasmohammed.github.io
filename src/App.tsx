@@ -5,7 +5,7 @@ type Screenshot = { src: string; alt: string; label: string }
 function assetUrl(path: string) {
   const assetPath = path.replace(/^\/+/, "")
   if (import.meta.env.PROD) {
-    return `https://raw.githubusercontent.com/ikhlasmohammed/mohammed-ikhlas-portfolio/gh-pages/${assetPath}`
+    return `https://raw.githubusercontent.com/ikhlasmohammed/ikhlasmohammed.github.io/gh-pages/${assetPath}`
   }
   return `${import.meta.env.BASE_URL}${assetPath}`
 }
